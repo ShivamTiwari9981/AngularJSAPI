@@ -1,0 +1,290 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DemoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_city">
+          <Key>
+            <PropertyRef Name="city_cd" />
+          </Key>
+          <Property Name="city_cd" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="city_nam" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="state_cd" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="rec_stus" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="crtd_on" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_country">
+          <Key>
+            <PropertyRef Name="country_cd" />
+          </Key>
+          <Property Name="country_cd" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="country_nam" Type="varchar" MaxLength="100" />
+          <Property Name="rec_stus" Type="varchar" MaxLength="1" />
+          <Property Name="crtd_on" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_gender">
+          <Key>
+            <PropertyRef Name="gender_cd" />
+          </Key>
+          <Property Name="gender_cd" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="gender_nam" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="rec_stus" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="crtd_on" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_state">
+          <Key>
+            <PropertyRef Name="state_cd" />
+          </Key>
+          <Property Name="state_cd" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="state_nam" Type="varchar" MaxLength="100" />
+          <Property Name="country_cd" Type="varchar" MaxLength="20" />
+          <Property Name="rec_stus" Type="varchar" MaxLength="1" />
+          <Property Name="crtd_on" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_student">
+          <Key>
+            <PropertyRef Name="student_cd" />
+          </Key>
+          <Property Name="student_cd" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="student_nam" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="student_mob" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="gender_cd" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="country_cd" Type="varchar" MaxLength="20" />
+          <Property Name="state_cd" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="img" Type="varchar(max)" />
+          <Property Name="rec_stus" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="crtd_on" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_student_subject">
+          <Key>
+            <PropertyRef Name="row_id" />
+            <PropertyRef Name="student_cd" />
+            <PropertyRef Name="subject_cd" />
+          </Key>
+          <Property Name="row_id" Type="int" Nullable="false" />
+          <Property Name="student_cd" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="subject_cd" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="rec_stus" Type="varchar" MaxLength="1" />
+          <Property Name="crtd_on" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_subject">
+          <Key>
+            <PropertyRef Name="subject_cd" />
+          </Key>
+          <Property Name="subject_cd" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="subject_nam" Type="varchar" MaxLength="100" />
+          <Property Name="country_cd" Type="varchar" MaxLength="20" />
+          <Property Name="rec_stus" Type="varchar" MaxLength="1" />
+          <Property Name="crtd_on" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="DemoModelStoreContainer">
+          <EntitySet Name="tbl_city" EntityType="Self.tbl_city" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_country" EntityType="Self.tbl_country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_gender" EntityType="Self.tbl_gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_state" EntityType="Self.tbl_state" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_student" EntityType="Self.tbl_student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_student_subject" EntityType="Self.tbl_student_subject" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_subject" EntityType="Self.tbl_subject" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DemoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_city">
+          <Key>
+            <PropertyRef Name="city_cd" />
+          </Key>
+          <Property Name="city_cd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="city_nam" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="state_cd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="rec_stus" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="crtd_on" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_country">
+          <Key>
+            <PropertyRef Name="country_cd" />
+          </Key>
+          <Property Name="country_cd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="country_nam" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="rec_stus" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="crtd_on" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_gender">
+          <Key>
+            <PropertyRef Name="gender_cd" />
+          </Key>
+          <Property Name="gender_cd" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="gender_nam" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="rec_stus" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="crtd_on" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_state">
+          <Key>
+            <PropertyRef Name="state_cd" />
+          </Key>
+          <Property Name="state_cd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="state_nam" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="country_cd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="rec_stus" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="crtd_on" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_student">
+          <Key>
+            <PropertyRef Name="student_cd" />
+          </Key>
+          <Property Name="student_cd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="student_nam" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="student_mob" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="gender_cd" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="country_cd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="state_cd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="img" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="rec_stus" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="crtd_on" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_student_subject">
+          <Key>
+            <PropertyRef Name="row_id" />
+            <PropertyRef Name="student_cd" />
+            <PropertyRef Name="subject_cd" />
+          </Key>
+          <Property Name="row_id" Type="Int32" Nullable="false" />
+          <Property Name="student_cd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="subject_cd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="rec_stus" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="crtd_on" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_subject">
+          <Key>
+            <PropertyRef Name="subject_cd" />
+          </Key>
+          <Property Name="subject_cd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="subject_nam" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="country_cd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="rec_stus" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="crtd_on" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="DemoContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_city" EntityType="Self.tbl_city" />
+          <EntitySet Name="tbl_country" EntityType="Self.tbl_country" />
+          <EntitySet Name="tbl_gender" EntityType="Self.tbl_gender" />
+          <EntitySet Name="tbl_state" EntityType="Self.tbl_state" />
+          <EntitySet Name="tbl_student" EntityType="Self.tbl_student" />
+          <EntitySet Name="tbl_student_subject" EntityType="Self.tbl_student_subject" />
+          <EntitySet Name="tbl_subject" EntityType="Self.tbl_subject" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DemoModelStoreContainer" CdmEntityContainer="DemoContext">
+          <EntitySetMapping Name="tbl_city">
+            <EntityTypeMapping TypeName="DemoModel.tbl_city">
+              <MappingFragment StoreEntitySet="tbl_city">
+                <ScalarProperty Name="city_cd" ColumnName="city_cd" />
+                <ScalarProperty Name="city_nam" ColumnName="city_nam" />
+                <ScalarProperty Name="state_cd" ColumnName="state_cd" />
+                <ScalarProperty Name="rec_stus" ColumnName="rec_stus" />
+                <ScalarProperty Name="crtd_on" ColumnName="crtd_on" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_country">
+            <EntityTypeMapping TypeName="DemoModel.tbl_country">
+              <MappingFragment StoreEntitySet="tbl_country">
+                <ScalarProperty Name="country_cd" ColumnName="country_cd" />
+                <ScalarProperty Name="country_nam" ColumnName="country_nam" />
+                <ScalarProperty Name="rec_stus" ColumnName="rec_stus" />
+                <ScalarProperty Name="crtd_on" ColumnName="crtd_on" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_gender">
+            <EntityTypeMapping TypeName="DemoModel.tbl_gender">
+              <MappingFragment StoreEntitySet="tbl_gender">
+                <ScalarProperty Name="gender_cd" ColumnName="gender_cd" />
+                <ScalarProperty Name="gender_nam" ColumnName="gender_nam" />
+                <ScalarProperty Name="rec_stus" ColumnName="rec_stus" />
+                <ScalarProperty Name="crtd_on" ColumnName="crtd_on" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_state">
+            <EntityTypeMapping TypeName="DemoModel.tbl_state">
+              <MappingFragment StoreEntitySet="tbl_state">
+                <ScalarProperty Name="state_cd" ColumnName="state_cd" />
+                <ScalarProperty Name="state_nam" ColumnName="state_nam" />
+                <ScalarProperty Name="country_cd" ColumnName="country_cd" />
+                <ScalarProperty Name="rec_stus" ColumnName="rec_stus" />
+                <ScalarProperty Name="crtd_on" ColumnName="crtd_on" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_student">
+            <EntityTypeMapping TypeName="DemoModel.tbl_student">
+              <MappingFragment StoreEntitySet="tbl_student">
+                <ScalarProperty Name="student_cd" ColumnName="student_cd" />
+                <ScalarProperty Name="student_nam" ColumnName="student_nam" />
+                <ScalarProperty Name="student_mob" ColumnName="student_mob" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="gender_cd" ColumnName="gender_cd" />
+                <ScalarProperty Name="country_cd" ColumnName="country_cd" />
+                <ScalarProperty Name="state_cd" ColumnName="state_cd" />
+                <ScalarProperty Name="img" ColumnName="img" />
+                <ScalarProperty Name="rec_stus" ColumnName="rec_stus" />
+                <ScalarProperty Name="crtd_on" ColumnName="crtd_on" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_student_subject">
+            <EntityTypeMapping TypeName="DemoModel.tbl_student_subject">
+              <MappingFragment StoreEntitySet="tbl_student_subject">
+                <ScalarProperty Name="row_id" ColumnName="row_id" />
+                <ScalarProperty Name="student_cd" ColumnName="student_cd" />
+                <ScalarProperty Name="subject_cd" ColumnName="subject_cd" />
+                <ScalarProperty Name="rec_stus" ColumnName="rec_stus" />
+                <ScalarProperty Name="crtd_on" ColumnName="crtd_on" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_subject">
+            <EntityTypeMapping TypeName="DemoModel.tbl_subject">
+              <MappingFragment StoreEntitySet="tbl_subject">
+                <ScalarProperty Name="subject_cd" ColumnName="subject_cd" />
+                <ScalarProperty Name="subject_nam" ColumnName="subject_nam" />
+                <ScalarProperty Name="country_cd" ColumnName="country_cd" />
+                <ScalarProperty Name="rec_stus" ColumnName="rec_stus" />
+                <ScalarProperty Name="crtd_on" ColumnName="crtd_on" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
